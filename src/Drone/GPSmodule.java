@@ -42,17 +42,17 @@ public class GPSmodule {
         return destination;
     }
 
-    public double getDroneSpeed() {
-        return this.droneSpeedKmh;
-    }
-
-    public LocalDateTime getExpectedArrivalTime() {
-        return expectedArrivalTime;
-    }
-
-    public LocalDateTime getLastUpdateTime() {
-        return lastUpdateTime;
-    }
+//    public double getDroneSpeed() {
+//        return this.droneSpeedKmh;
+//    }
+//
+//    public LocalDateTime getExpectedArrivalTime() {
+//        return expectedArrivalTime;
+//    }
+//
+//    public LocalDateTime getLastUpdateTime() {
+//        return lastUpdateTime;
+//    }
 
     // -------------------- SETTERS --------------------
 
