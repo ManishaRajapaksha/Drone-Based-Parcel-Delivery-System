@@ -8,7 +8,7 @@ public class ChargingStation {
     private final int capacity;       // max drones that can charge
     private int currentDrones;  // currently charging drones
     private static int StationCount = 1;
-    private Location location;
+    //private Location location;
 
     public ChargingStation(int capacity) {
         this.stationId = "ST" + StationCount++;
