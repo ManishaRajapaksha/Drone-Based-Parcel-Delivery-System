@@ -6,7 +6,10 @@ import Delivery.Parcel;
 
 import Dispatch.Dispatcher;
 
-import Drone.*;
+import Drone.Drone;
+import Drone.HeavyDrone;
+import Drone.LightDrone;
+
 import Common.*;
 
 import java.util.ArrayList;
