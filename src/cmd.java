@@ -10,7 +10,9 @@ import Drone.Drone;
 import Drone.HeavyDrone;
 import Drone.LightDrone;
 
-import Common.*;
+import Common.Location;
+import Common.WeatherSystem;
+import Common.ChargingStation;
 
 import java.util.ArrayList;
 import java.util.Scanner;
