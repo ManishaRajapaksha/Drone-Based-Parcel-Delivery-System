@@ -17,7 +17,7 @@ public class DeliveryRequest {
     private String status;
     private int ParcelCount;
 
-    public DeliveryRequest(Parcel parcel, Customer customer, Location deliveryLocation1) {
+    public DeliveryRequest(Parcel parcel, Customer customer) {
         this.requestId = "DR" + nextId++;
         this.customer = customer;
         this.parcel = parcel;
