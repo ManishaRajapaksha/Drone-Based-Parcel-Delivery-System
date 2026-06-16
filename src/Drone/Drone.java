@@ -13,7 +13,7 @@ public abstract class Drone {
     protected Location baseLocation;
     protected double speed;
 
-    protected static int droenCount;
+//    protected static int droenCount;
 
     public Drone(int id, double maxWeight, Location baseLocation, double speed) {
         this.droneID = "DR" + id;

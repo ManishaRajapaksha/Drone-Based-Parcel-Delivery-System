@@ -11,8 +11,25 @@ import Drone.Drone;
 import Drone.HeavyDrone;
 import Drone.LightDrone;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingWorker;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
 
 public class RunSystem extends JFrame {
 
@@ -503,7 +520,7 @@ public class RunSystem extends JFrame {
     }
 
     // ------------- MAIN FUNCTION -------------
-    public static void main(String[] args) {
+    public static void main() {
         new RunSystem();
     }
 }
