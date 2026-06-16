@@ -1,7 +1,9 @@
 import Customer.Customer;
 import Customer.CustomerManager;
 
-import Delivery.*;
+import Delivery.DeliveryRequest;
+import Delivery.Parcel;
+
 import Dispatch.*;
 import Drone.*;
 import Common.*;
