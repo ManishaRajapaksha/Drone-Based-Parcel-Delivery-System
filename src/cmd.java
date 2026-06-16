@@ -1,4 +1,6 @@
-import Customer.*;
+import Customer.Customer;
+import Customer.CustomerManager;
+
 import Delivery.*;
 import Dispatch.*;
 import Drone.*;
