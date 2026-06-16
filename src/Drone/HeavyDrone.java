@@ -6,14 +6,16 @@ public class HeavyDrone extends Drone {
     
     public HeavyDrone(int id, double maxWeight, double speed, String baseLoc) {
         super(id,maxWeight, new Location(baseLoc), speed);
+        // Heavy drones use high-capacity battery configuration
         super.battery = new Battery(CellType.S6, 10000, 100); // Heavy drones have larger batteries
     }
     public HeavyDrone(int id, double maxWeight, double speed, Location baseLoc) {
         super(id,maxWeight, baseLoc, speed );
-        // super.speed = speed;
+        // Heavy drones use high-capacity battery configuration
         super.battery = new Battery(CellType.S6, 10000, 100); // Heavy drones have larger batteries
     }
 
+    // Simulates drone take-off process
     @Override
     public void takeOff() {
         setStatus("Taking Off");
@@ -21,6 +23,7 @@ public class HeavyDrone extends Drone {
         updateBattery(5);
     }
 
+    // Handles parcel delivery process to a given destination
     @Override
     public void deliverParcel(String destination) {
         setStatus("Delivering");
