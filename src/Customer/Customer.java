@@ -52,7 +52,7 @@ public class Customer {
 
 
     public DeliveryRequest requestDelivery(Parcel parcel) {
-        return new DeliveryRequest(parcel, this, deliveryLocation);
+        return new DeliveryRequest(parcel, this);
     }
 
     public String toString() {
