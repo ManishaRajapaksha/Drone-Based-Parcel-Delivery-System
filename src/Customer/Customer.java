@@ -56,6 +56,10 @@ public class Customer {
     }
 
     public String toString() {
-        return customerId + " - " + name + " (" + contactNumber + ")";
+        return "Customer ID: " + customerId +
+                "\nName: " + name +
+                "\nAddress: " + address +
+                "\nContact: " + contactNumber +
+                "\nLocation: " + location;
     }
 }
