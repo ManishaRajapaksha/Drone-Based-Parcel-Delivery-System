@@ -4,12 +4,13 @@ import Common.Location;
 
 public class LightDrone extends Drone {
 
-
+    // Constructor using base location as String input
     public LightDrone(int id, double maxWeight, double speed, String baseLoc) {
         super(id,maxWeight, new Location(baseLoc), speed);
         super.battery = new Battery(CellType.S4, 5000, 100);
     }
 
+    // Constructor using Location object directly
     public LightDrone(int id, double maxWeight, double speed, Location baseLoc) {
         super(id,maxWeight, baseLoc, speed);
         // super.speed = speed;
@@ -17,6 +18,7 @@ public class LightDrone extends Drone {
         // super.gps.setSpeed(speed);
     }
 
+    // Simulates drone take-off process
     @Override
     public void takeOff() {
         setStatus("Taking Off");
@@ -24,6 +26,7 @@ public class LightDrone extends Drone {
         updateBattery(5);
     }
 
+    // Handles parcel delivery process to destination using GPS simulation
     @Override
     public void deliverParcel(String destination) {
         setStatus("Delivering");
@@ -37,6 +40,7 @@ public class LightDrone extends Drone {
         System.out.println("Parcel delivered successfully.");
     }
 
+    // Returns drone back to its base location
     @Override
     public void returnToBase() {
         setStatus("Returning");
@@ -48,6 +52,7 @@ public class LightDrone extends Drone {
         System.out.println("Drone returned to base.");
     }
 
+    // Returns current speed of the drone
     public double getSpeed() {
         return speed;
     }
