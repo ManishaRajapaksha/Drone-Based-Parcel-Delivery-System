@@ -1,7 +1,7 @@
 import Customer.Customer;
 import Customer.CustomerManager;
 
-import Delivery.DeliveryRequest;
+import Customer.DeliveryRequest;
 import Delivery.Parcel;
 
 import Dispatch.Dispatcher;
@@ -11,15 +11,15 @@ import Drone.HeavyDrone;
 import Drone.LightDrone;
 
 import Common.Location;
-import Common.WeatherSystem;
-import Common.ChargingStation;
+import Dispatch.WeatherSystem;
+import Dispatch.ChargingStation;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class cmd {
 
-    public static void main(String[] args) {
+    public static void main() {
 
         Scanner sc = new Scanner(System.in);
 

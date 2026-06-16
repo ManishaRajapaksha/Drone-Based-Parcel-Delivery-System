@@ -2,8 +2,8 @@ package Common;
 
 public class Location {
 
-    private double latitude;
-    private double longitude;
+    private final double latitude;
+    private final double longitude;
     private String city;
 
     public Location(double latitude, double longitude) {
