@@ -51,7 +51,7 @@ public class Customer {
     }
 
 
-    public DeliveryRequest requestDelivery(Parcel parcel, Location deliveryLocation) {
+    public DeliveryRequest requestDelivery(Parcel parcel) {
         return new DeliveryRequest(parcel, this, deliveryLocation);
     }
 
