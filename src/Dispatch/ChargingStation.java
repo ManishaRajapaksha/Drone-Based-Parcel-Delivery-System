@@ -36,11 +36,11 @@ public class ChargingStation {
         return true;
     }
 
-    public void droneLeft() {
-        if (currentDrones > 0) {
-            currentDrones--;
-        }
-    }
+//    public void droneLeft() {
+//        if (currentDrones > 0) {
+//            currentDrones--;
+//        }
+   // }
 
     public int getCapacity() {
         return capacity;
