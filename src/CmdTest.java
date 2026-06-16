@@ -17,7 +17,7 @@ import Dispatch.ChargingStation;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class cmd {
+public class CmdTest {
 
     public static void main() {
 

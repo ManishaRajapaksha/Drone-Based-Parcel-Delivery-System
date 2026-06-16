@@ -5,7 +5,7 @@ public class Parcel {
 
     public enum Status {
         PENDING,
-        IN_TRANSIT,
+        //IN_TRANSIT,
         DELIVERED
     }
 
@@ -63,10 +63,10 @@ public class Parcel {
         System.out.println("Parcel " + parcelId + " status updated to: " + status);
     }
 
-    public void displayParcelDetails() {
-        System.out.println("Parcel ID: " + parcelId);
-        System.out.println("Weight: " + weight + " kg");
-        System.out.println("Destination: " + destinationLocation);
-        System.out.println("Status: " + status);
-    }
-}
+//    public void displayParcelDetails() {
+//        System.out.println("Parcel ID: " + parcelId);
+//        System.out.println("Weight: " + weight + " kg");
+//        System.out.println("Destination: " + destinationLocation);
+//        System.out.println("Status: " + status);
+//    }
+//}
