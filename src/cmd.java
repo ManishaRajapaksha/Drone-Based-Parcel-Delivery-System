@@ -1,8 +1,18 @@
-import Customer.*;
-import Delivery.*;
-import Dispatch.*;
-import Drone.*;
-import Common.*;
+import Customer.Customer;
+import Customer.CustomerManager;
+
+import Delivery.DeliveryRequest;
+import Delivery.Parcel;
+
+import Dispatch.Dispatcher;
+
+import Drone.Drone;
+import Drone.HeavyDrone;
+import Drone.LightDrone;
+
+import Common.Location;
+import Common.WeatherSystem;
+import Common.ChargingStation;
 
 import java.util.ArrayList;
 import java.util.Scanner;
