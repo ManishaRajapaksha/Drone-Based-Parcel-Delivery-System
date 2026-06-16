@@ -358,7 +358,7 @@ public class RunSystem extends JFrame {
         Parcel parcel = new Parcel(parcelWeight, deliveryCity);
 
         // Create Delivery Request
-        DeliveryRequest request = customer.requestDelivery(parcel, new Location(deliveryCity));
+        DeliveryRequest request = customer.requestDelivery(parcel);
 
         // Update Request Buttons
         for (int i = 0; i < DreqList.length; i++) {
