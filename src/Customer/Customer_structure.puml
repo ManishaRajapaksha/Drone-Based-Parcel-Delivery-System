@@ -1,0 +1,260 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": true,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": true,
+    "cutGetterAndSetter": false,
+    "cutConstructors": false
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "Customer.Customer",
+  "extensionCallbackMethod": "jetbrains://idea/navigate/reference?project\u003dDrone%20Based%20Parcel%20Delivery%20System\u0026fqn\u003dDrone" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_2024019467 { 
+   	label=Common
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Location2024019467[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Location</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   city: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   latitude: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   longitude: double [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Location(latitude: double, longitude: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ Location(city: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getLatitude(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getLongitude(): double</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_670819326 { 
+   	label=Customer
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Customer670819326[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Customer</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   address: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   contactNumber: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   customerId: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   location: Location [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   name: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Customer(name: String, address: String, contactNumber: String, location: Location)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getAddress(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getContactNumber(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getCustomerId(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getLocation(): Location</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getName(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ requestDelivery(parcel: Parcel, deliveryLocation: Location): DeliveryRequest</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setName(name: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateAddress(newAddress: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateContact(newContact: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateLocation(newLocation: Location)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+CustomerManager670819326[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CustomerManager</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   customers: ArrayList&lt;Customer&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getCustomer(customerId: String): Customer</TD></TR>
+<TR><TD ALIGN="LEFT" >+ listCustomers()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ registerCustomer(customer: Customer)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DeliveryRequest670819326[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DeliveryRequest</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   ParcelCount: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   customer: Customer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   deliveryLocation: Location [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   parcel: Parcel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   pickupLocation: Location [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   requestId: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   requestTime: LocalDateTime [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   status: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ DeliveryRequest(parcel: Parcel, customer: Customer, deliveryLocation1: Location)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ DeliveryRequest(parcelID: String, customer: Customer, loc: Location)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getCustomer(): Customer</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDeliveryLocation(): Location</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getPickupLocation(): Location</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getRequestId(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getStatus(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateStatus(newStatus: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+RegisteredCustomer670819326[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)RegisteredCustomer</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   loyaltyPoints: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ RegisteredCustomer(customerId: String, name: String, address: String, contactNumber: String, location: Location)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addPoints(points: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getLoyaltyPoints(): int</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_888111124 { 
+   	label=Delivery
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Parcel888111124[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Parcel</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   destinationLocation: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   parcelId: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   status: Status [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   weight: double [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Parcel(parcelId: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ Parcel(weight: double, destinationLocation: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ Parcel(weight: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ displayParcelDetails()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDestinationLocation(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getParcelId(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getStatus(): Status</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getWeight(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setDestinationLocation(destinationLocation: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setParcelId(parcelId: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setStatus(status: Status)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setWeight(weight: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateParcelStatus(newStatus: Status)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+Customer670819326 -> DeliveryRequest670819326[label="requestDelivery() -> DeliveryRequest()"];
+Customer670819326 -> Location2024019467[label="location
+[0..1]"];
+Customer670819326 -> RegisteredCustomer670819326[arrowhead=none, arrowtail=empty, dir=both];
+CustomerManager670819326 -> Customer670819326[label="customers
+[0..*]"];
+DeliveryRequest670819326 -> Customer670819326[label="customer
+[0..1]"];
+DeliveryRequest670819326 -> Location2024019467[label="deliveryLocation
+[0..1]"];
+DeliveryRequest670819326 -> Location2024019467[label="pickupLocation
+[0..1]"];
+DeliveryRequest670819326 -> Parcel888111124[label="parcel
+[0..1]"];
+    
+}
+@enduml

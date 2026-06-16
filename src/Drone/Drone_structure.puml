@@ -1,0 +1,304 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": true,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": true,
+    "cutGetterAndSetter": false,
+    "cutConstructors": false
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "Drone.Drone",
+  "extensionCallbackMethod": "jetbrains://idea/navigate/reference?project\u003dDrone%20Based%20Parcel%20Delivery%20System\u0026fqn\u003dDrone" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_2024019467 { 
+   	label=Common
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Location2024019467[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Location</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   city: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   latitude: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   longitude: double [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Location(latitude: double, longitude: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ Location(city: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getLatitude(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getLongitude(): double</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_349415578 { 
+   	label=Dispatch
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Dispatcher349415578[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Dispatcher</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   chargingStation: ChargingStation [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   dispatcherLocation: Location [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   droneCount: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   droneFleet: Drone[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   weatherSystem: WeatherSystem [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Dispatcher(weatherSystem: WeatherSystem, chargingStation: ChargingStation, stationLocation: Location, droneCount: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ assignDrone(request: DeliveryRequest, carryWeight: double): Drone</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDrone(index: int): Drone</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getLocation(): Location</TD></TR>
+<TR><TD ALIGN="LEFT" >+ registerDrone(drone: Drone, index: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ registerDrone(drone: HeavyDrone, index: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ registerDrone(drone: LightDrone, index: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ removeDrone(index: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ showFleetStatus()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateDroneFleet()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_66305784 { 
+   	label=Drone
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Battery66305784[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Battery</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   capacity: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   cellType: CellType [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   chargeLevel: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   maxVoltage: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   maxmAh: int [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Battery(cellType: CellType, capacity: int, initialChargePercent: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ Battery()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ drain(amount: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getBatteryInfo(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getCapacity(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getCellType(): CellType</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getChargeLevel(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getCurrentVoltage(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getRemainingmAh(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isLow(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ recharge()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Drone66305784[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Drone</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   baseLocation: Location [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   battery: Battery [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   droneID: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   gps: GPSmodule [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   maxWeight: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   speed: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   status: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Drone(maxWeight: double, baseLocation: Location, speed: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ Drone(id: int, maxWeight: double, baseLocation: Location, speed: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ assignRequest(request: DeliveryRequest)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ deliverParcel(destination: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getBattery(): Battery</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getBatteryLevel(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDroneID(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getGpsModule(): GPSmodule</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getIdNumber(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getLocation(): Location</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getMaxWeight(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getSpeed(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getStatus(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isAvailable(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ rechargeBattery()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ returnToBase()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setDestination(destination: Location)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setStatus(status: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ showLocation()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ simulateTravel()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ takeOff()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateBattery(amount: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateDrone()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+GPSmodule66305784[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)GPSmodule</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   currentLocation: Location [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   destination: Location [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   droneSpeedKmh: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   expectedArrivalTime: LocalDateTime [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   lastUpdateTime: LocalDateTime [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ GPSmodule(startLocation: Location, speedKmh: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ GPSmodule(startLocation: Location)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ GPSmodule()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ calculateDistance(a: Location, b: Location): double</TD></TR>
+<TR><TD ALIGN="LEFT" >- calculateETA()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getCurrentLocation(): Location</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDestination(): Location</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDistanceToDestination(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDroneSpeed(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getExpectedArrivalTime(): LocalDateTime</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getGPSInfo(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getLastUpdateTime(): LocalDateTime</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getRemainingTime(): Duration</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setDestination(destination: Location)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setSpeed(speedKmh: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ simulateTravel(): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateLocation()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+HeavyDrone66305784[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)HeavyDrone</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ HeavyDrone(id: int, maxWeight: double, speed: double, baseLoc: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ HeavyDrone(id: int, maxWeight: double, speed: double, baseLoc: Location)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ deliverParcel(destination: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getSpeed(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ returnToBase()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ takeOff()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+LightDrone66305784[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)LightDrone</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ LightDrone(id: int, maxWeight: double, speed: double, baseLoc: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ LightDrone(id: int, maxWeight: double, speed: double, baseLoc: Location)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ deliverParcel(destination: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getSpeed(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ returnToBase()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ takeOff()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+Dispatcher349415578 -> Drone66305784[label="droneFleet
+[0..*]"];
+Drone66305784 -> Battery66305784[label="battery
+[0..1]"];
+Drone66305784 -> GPSmodule66305784[label="gps
+[0..1]"];
+Drone66305784 -> HeavyDrone66305784[arrowhead=none, arrowtail=empty, dir=both];
+Drone66305784 -> LightDrone66305784[arrowhead=none, arrowtail=empty, dir=both];
+Drone66305784 -> Location2024019467[label="baseLocation
+[0..1]"];
+    
+}
+@enduml

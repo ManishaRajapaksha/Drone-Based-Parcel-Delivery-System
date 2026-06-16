@@ -1,0 +1,201 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": true,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": true,
+    "cutGetterAndSetter": false,
+    "cutConstructors": false
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "Delivery.Parcel",
+  "extensionCallbackMethod": "jetbrains://idea/navigate/reference?project\u003dDrone%20Based%20Parcel%20Delivery%20System\u0026fqn\u003dDrone" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_1195631738 { 
+   	label=RunSystem
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   RunSystem1195631738[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)RunSystem</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   DreqList: DeliveryRequest[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   addedDrones: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   customerManager: CustomerManager [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   dispatcher: Dispatcher [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   droneButtons: JButton[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   requestButtons: JButton[] [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   rightPanel: JPanel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   station: ChargingStation [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   terminal: JTextArea [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   weather: WeatherSystem [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ RunSystem()</TD></TR>
+<TR><TD ALIGN="LEFT" >- addDeliveryRequest(customerName: String, customerAddress: String, customerPhone: String, parcelWeight: double, deliveryCity: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >- addDrone(id: String, type: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ main(args: String[])</TD></TR>
+<TR><TD ALIGN="LEFT" >- openAddDroneWindow()</TD></TR>
+<TR><TD ALIGN="LEFT" >- openDeliveryRequestWindow()</TD></TR>
+<TR><TD ALIGN="LEFT" >- showDroneInfo(index: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >- showReqInfo(index: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_670819326 { 
+   	label=Customer
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   DeliveryRequest670819326[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DeliveryRequest</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   ParcelCount: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   customer: Customer [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   deliveryLocation: Location [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   parcel: Parcel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   pickupLocation: Location [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   requestId: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   requestTime: LocalDateTime [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   status: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ DeliveryRequest(parcel: Parcel, customer: Customer, deliveryLocation1: Location)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ DeliveryRequest(parcelID: String, customer: Customer, loc: Location)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getCustomer(): Customer</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDeliveryLocation(): Location</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getPickupLocation(): Location</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getRequestId(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getStatus(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateStatus(newStatus: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+subgraph cluster_888111124 { 
+   	label=Delivery
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   Parcel888111124[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Parcel</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   destinationLocation: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   parcelId: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   status: Status [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   weight: double [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ Parcel(parcelId: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ Parcel(weight: double, destinationLocation: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ Parcel(weight: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ displayParcelDetails()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDestinationLocation(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getParcelId(): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getStatus(): Status</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getWeight(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setDestinationLocation(destinationLocation: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setParcelId(parcelId: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setStatus(status: Status)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ setWeight(weight: double)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateParcelStatus(newStatus: Status)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+
+'edges    
+DeliveryRequest670819326 -> Parcel888111124[label="parcel
+[0..1]"];
+RunSystem1195631738 -> DeliveryRequest670819326[label="DreqList
+[0..*]"];
+    
+}
+@enduml
