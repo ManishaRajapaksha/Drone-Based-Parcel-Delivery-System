@@ -69,4 +69,4 @@ public class Parcel {
 //        System.out.println("Destination: " + destinationLocation);
 //        System.out.println("Status: " + status);
 //    }
-//}
+}
