@@ -100,7 +100,7 @@ public class CmdTest {
                     sc.nextLine();
 
                     Parcel p = new Parcel(w, "Destination");
-                    DeliveryRequest req = cust.requestDelivery(p, new Location(lat, lon));
+                    DeliveryRequest req = cust.requestDelivery(p);
                     requests.add(req);
 
                     System.out.println("Delivery Request Created: " + req.getRequestId());
